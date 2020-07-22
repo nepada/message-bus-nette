@@ -1,0 +1,21 @@
+includes:
+    - vendor/phpstan/phpstan-strict-rules/rules.neon
+    - vendor/phpstan/phpstan-nette/extension.neon
+    - vendor/phpstan/phpstan-nette/rules.neon
+    - vendor/nepada/phpstan-nette-tester/extension.neon
+    - tests/PHPStan/disallowedCalls.neon
+
+parameters:
+    level: max
+    paths:
+        - tests
+
+    fileExtensions:
+        - php
+        - phpt
+
+    excludes_analyse:
+        - tests/temp/*
+
+    ignoreErrors:
+        - '~Call to static method Tester\\Assert::(type|count|same|notSame)\(\) with .* and .* will always evaluate to true\.~'

@@ -1,0 +1,22 @@
+includes:
+    - vendor/phpstan/phpstan-strict-rules/rules.neon
+    - vendor/pepakriz/phpstan-exception-rules/extension.neon
+    - vendor/phpstan/phpstan-nette/extension.neon
+    - vendor/phpstan/phpstan-nette/rules.neon
+    - tests/PHPStan/disallowedCalls.neon
+
+parameters:
+    level: max
+    paths:
+        - src
+
+    exceptionRules:
+        uncheckedExceptions:
+            - LogicException
+            - Nette\InvalidStateException
+
+    ignoreErrors:
+        - # intended
+            path: src/MessageBusNette/DI/MessageBusExtension.php
+            message: "#^PHPDoc tag @throws with type Nepada\\\\MessageBus\\\\StaticAnalysis\\\\StaticAnalysisFailedException is not compatible with parent$#"
+            count: 1
