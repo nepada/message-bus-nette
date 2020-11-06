@@ -1,7 +1,7 @@
 Message Bus integration into Nette Framework
 ============================================
 
-[![Build Status](https://travis-ci.org/nepada/message-bus-nette.svg?branch=master)](https://travis-ci.org/nepada/message-bus-nette)
+[![Build Status](https://github.com/nepada/message-bus-nette/workflows/CI/badge.svg)](https://github.com/nepada/message-bus-nette/actions?query=workflow%3ACI+branch%3Amaster)
 [![Coverage Status](https://coveralls.io/repos/github/nepada/message-bus-nette/badge.svg?branch=master)](https://coveralls.io/github/nepada/message-bus-nette?branch=master)
 [![Downloads this Month](https://img.shields.io/packagist/dm/nepada/message-bus-nette.svg)](https://packagist.org/packages/nepada/message-bus-nette)
 [![Latest stable](https://img.shields.io/packagist/v/nepada/message-bus-nette.svg)](https://packagist.org/packages/nepada/message-bus-nette)
