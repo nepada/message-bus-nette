@@ -251,7 +251,6 @@ class MessageBusExtension extends CompilerExtension
     }
 
     /**
-     * @phpstan-param string $handlerType
      * @param MessageHandlerValidator $messageHandlerValidator
      * @param string $handlerType
      * @return string[][]
