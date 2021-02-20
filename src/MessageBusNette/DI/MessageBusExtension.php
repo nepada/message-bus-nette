@@ -32,6 +32,7 @@ use Nette\DI\Definitions\ServiceDefinition;
 use Nette\Schema\Expect;
 use Nette\Utils\Strings;
 use Psr\Container\ContainerInterface;
+use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 use Symfony\Component\Messenger\MessageBus;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Messenger\Middleware\DispatchAfterCurrentBusMiddleware;
@@ -252,7 +253,7 @@ class MessageBusExtension extends CompilerExtension
 
     /**
      * @param MessageHandlerValidator $messageHandlerValidator
-     * @param string $handlerType
+     * @param class-string<MessageHandlerInterface> $handlerType
      * @return string[][]
      * @throws StaticAnalysisFailedException
      */
@@ -263,6 +264,7 @@ class MessageBusExtension extends CompilerExtension
 
         $serviceNamesByMessageType = [];
         foreach ($containerBuilder->findByType($handlerType) as $serviceName => $serviceDefinition) {
+            /** @var class-string<MessageHandlerInterface>|null $handlerTypeString */
             $handlerTypeString = $serviceDefinition->getType();
             if ($handlerTypeString === null) {
                 throw new \LogicException('Type of handler service type must be defined in this context.');
