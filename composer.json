@@ -26,7 +26,7 @@
     "require-dev": {
         "nette/tester": "2.3.4",
         "phpstan/phpstan": "0.12.60",
-        "phpstan/phpstan-strict-rules": "0.12.6",
+        "phpstan/phpstan-strict-rules": "0.12.7",
         "pepakriz/phpstan-exception-rules": "0.11.2",
         "phpstan/phpstan-nette": "0.12.11",
         "nepada/phpstan-nette-tester": "0.3.1",
