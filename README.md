@@ -69,9 +69,10 @@ You can record your domain events inside entities implementing `Nepada\Bridges\M
 ### Tip: use SearchExtension to auto-register command handlers and event subscribers
 
 ```yaml
-search.messageBus:
-    in: %appDir%
-    implements:
-        - Nepada\MessageBus\Commands\CommandHandler
-        - Nepada\MessageBus\Events\EventSubscriber
+search:
+    messageBusHandlers:
+        in: %appDir%
+        implements:
+            - Nepada\MessageBus\Commands\CommandHandler
+            - Nepada\MessageBus\Events\EventSubscriber
 ```
