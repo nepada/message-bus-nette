@@ -4,7 +4,6 @@ declare(strict_types = 1);
 namespace NepadaTests\MessageBusNette;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Tools\SchemaTool;
 use Nepada\MessageBus\Commands\CommandBus;
 use NepadaTests\MessageBusNette\DI\ConfiguratorFactory;
@@ -357,7 +356,6 @@ class IntegrationTest extends TestCase
         /** @var EntityManagerInterface $entityManager */
         $entityManager = $container->getByType(EntityManagerInterface::class);
         $connection = $entityManager->getConnection();
-        /** @var ClassMetadata[] $metadata */
         $metadata = $entityManager->getMetadataFactory()->getAllMetadata();
         $schemaTool = new SchemaTool($entityManager);
         foreach ($schemaTool->getCreateSchemaSql($metadata) as $query) {
