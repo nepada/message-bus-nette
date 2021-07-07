@@ -16,3 +16,4 @@ updates:
       - dependency-name: "nette/bootstrap"
       - dependency-name: "nette/robot-loader"
       - dependency-name: "nepada/message-bus-doctrine"
+      - dependency-name: "doctrine/cache"

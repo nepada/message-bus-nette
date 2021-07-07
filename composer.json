@@ -35,7 +35,8 @@
         "nepada/coding-standard": "7.4.0",
         "nette/bootstrap": "^3.0@dev",
         "nette/robot-loader": "^3.2.4@dev",
-        "nepada/message-bus-doctrine": "^2.0@dev"
+        "nepada/message-bus-doctrine": "^2.0@dev",
+        "doctrine/cache": "^1.11"
     },
     "autoload": {
         "psr-4": {
