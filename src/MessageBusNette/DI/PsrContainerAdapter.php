@@ -16,22 +16,12 @@ final class PsrContainerAdapter implements ContainerInterface
         $this->container = $container;
     }
 
-    /**
-     * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
-     * @param string $id
-     * @return object
-     */
-    public function get($id): object
+    public function get(string $id): object
     {
         return $this->container->getService($id);
     }
 
-    /**
-     * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
-     * @param string $id
-     * @return bool
-     */
-    public function has($id): bool
+    public function has(string $id): bool
     {
         return $this->container->hasService($id);
     }
