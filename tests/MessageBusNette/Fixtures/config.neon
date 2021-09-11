@@ -30,4 +30,4 @@ services:
         arguments:
             connection: [driver: pdo_sqlite, path: %databaseFile%]
 
-    - Psr\Log\Test\TestLogger
+    - NepadaTests\MessageBusNette\Fixtures\TestLogger

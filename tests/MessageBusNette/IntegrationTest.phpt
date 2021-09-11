@@ -19,9 +19,9 @@ use NepadaTests\MessageBusNette\Fixtures\NotifyCustomerOnOrderPlaced;
 use NepadaTests\MessageBusNette\Fixtures\OrderPlacedEvent;
 use NepadaTests\MessageBusNette\Fixtures\PlaceOrderCommand;
 use NepadaTests\MessageBusNette\Fixtures\PlaceOrderHandler;
+use NepadaTests\MessageBusNette\Fixtures\TestLogger;
 use NepadaTests\TestCase;
 use Nette;
-use Psr\Log\Test\TestLogger;
 use Tester\Assert;
 
 require_once __DIR__ . '/../bootstrap.php';
