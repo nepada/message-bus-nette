@@ -69,9 +69,10 @@ class MessageBusExtensionTest extends TestCase
         $handlerTypes = [];
         /** @var HandlerDescriptor $handlerDescriptor */
         foreach ($handlerDescriptors as $handlerDescriptor) {
-            $handler = $handlerDescriptor->getHandler();
-            assert(is_object($handler));
-            $handlerTypes[] = get_class($handler);
+            $handlerName = $handlerDescriptor->getName();
+            $handlerType = Nette\Utils\Strings::replace($handlerName, '~::__invoke~', '');
+            Assert::true(class_exists($handlerType));
+            $handlerTypes[] = $handlerType;
         }
         sort($handlerTypes);
         return $handlerTypes;
