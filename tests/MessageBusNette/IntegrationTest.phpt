@@ -323,8 +323,8 @@ class IntegrationTest extends TestCase
     }
 
     /**
-     * @param mixed[] $records
-     * @return mixed[]
+     * @param array<int, array{level: mixed, message: string|\Stringable, context: array<string, mixed>}> $records
+     * @return array<int, array{level: mixed, message: string|\Stringable, context: array<string, mixed>}>
      */
     private function normalizeLogRecords(array $records): array
     {

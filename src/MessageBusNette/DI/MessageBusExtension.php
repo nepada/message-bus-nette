@@ -132,7 +132,7 @@ class MessageBusExtension extends CompilerExtension
     }
 
     /**
-     * @param string|mixed[] $definition
+     * @param string|array{class: string, arguments: array<mixed>|null} $definition
      * @return string
      */
     protected function resolveLoggerService($definition): string
