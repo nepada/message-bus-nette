@@ -9,12 +9,12 @@ final class TestLogger extends AbstractLogger
 {
 
     /**
-     * @var array<int, array{level: mixed, message: string|\Stringable, context: array<string, mixed>}>
+     * @var array<int, array{level: mixed, message: string|\Stringable, context: array<mixed>}>
      */
     public array $records = [];
 
     /**
-     * @var array<string, array<int, array{level: mixed, message: string|\Stringable, context: array<string, mixed>}>>
+     * @var array<string|int, array<int, array{level: mixed, message: string|\Stringable, context: array<mixed>}>>
      */
     public array $recordsByLevel = [];
 
