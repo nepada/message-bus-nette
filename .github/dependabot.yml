@@ -18,3 +18,4 @@ updates:
       - dependency-name: "nette/robot-loader"
       - dependency-name: "doctrine/cache"
       - dependency-name: "doctrine/dbal"
+      - dependency-name: "doctrine/annotations"

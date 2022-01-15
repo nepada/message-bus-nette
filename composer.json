@@ -36,7 +36,8 @@
         "nette/bootstrap": ">=3.0@dev",
         "nette/robot-loader": ">=3.3.1@dev",
         "doctrine/cache": "^1.11",
-        "doctrine/dbal": ">=2.13.3"
+        "doctrine/dbal": ">=2.13.3",
+        "doctrine/annotations": ">=1.8"
     },
     "autoload": {
         "psr-4": {
