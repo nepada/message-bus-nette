@@ -23,12 +23,3 @@ parameters:
         uncheckedExceptionClasses:
             - LogicException
             - Nette\InvalidStateException
-
-    ignoreErrors:
-        - # config pre-validated with schema
-            message: "~Property fetch ->.* is prohibited on unknown type \\(\\$this->config->.*\\)~"
-            path: src/MessageBusNette/DI/MessageBusExtension.php
-        - # false positive
-            message: "#^Invalid var phpdoc of \\$handlerTypeString\\. Cannot assign string\\|null to class\\-string\\<Symfony\\\\Component\\\\Messenger\\\\Handler\\\\MessageHandlerInterface\\>\\|null$#"
-            count: 1
-            path: src/MessageBusNette/DI/MessageBusExtension.php
