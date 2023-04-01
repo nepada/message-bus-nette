@@ -22,7 +22,7 @@ class Invoice implements ContainsRecordedEvents
      */
     private ?int $id = null;
 
-    public static function create(): Invoice
+    public static function create(): self
     {
         $invoice = new self();
         $invoice->record(new InvoiceCreatedEvent());
