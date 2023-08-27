@@ -19,3 +19,6 @@ updates:
       - dependency-name: "doctrine/cache"
       - dependency-name: "doctrine/dbal"
       - dependency-name: "doctrine/annotations"
+    groups:
+        phpstan:
+            patterns: ["*phpstan*"]
