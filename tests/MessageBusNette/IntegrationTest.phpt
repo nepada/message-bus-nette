@@ -365,7 +365,6 @@ class IntegrationTest extends TestCase
 
     /**
      * @param mixed[] $parameters
-     * @return Nette\DI\Container
      */
     private function createContainer(array $parameters = []): Nette\DI\Container
     {

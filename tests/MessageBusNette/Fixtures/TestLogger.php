@@ -20,6 +20,7 @@ final class TestLogger extends AbstractLogger
 
     /**
      * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+     * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.UselessAnnotation
      * @param mixed $level
      * @param string|\Stringable $message
      * @param array<mixed> $context

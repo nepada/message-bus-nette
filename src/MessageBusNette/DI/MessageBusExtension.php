@@ -133,7 +133,6 @@ class MessageBusExtension extends CompilerExtension
 
     /**
      * @param string|array{class: string, arguments: array<mixed>|null} $definition
-     * @return string
      */
     protected function resolveLoggerService(string|array $definition): string
     {
@@ -252,7 +251,6 @@ class MessageBusExtension extends CompilerExtension
     }
 
     /**
-     * @param MessageHandlerValidator $messageHandlerValidator
      * @param class-string<MessageHandlerInterface> $handlerType
      * @return string[][]
      * @throws StaticAnalysisFailedException
