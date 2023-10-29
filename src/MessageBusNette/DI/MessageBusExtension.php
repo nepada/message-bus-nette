@@ -59,7 +59,7 @@ class MessageBusExtension extends CompilerExtension
         $serviceReference = Expect::string()
             ->assert(fn (string $service): bool => Strings::startsWith($service, '@'));
         $service = Expect::anyOf($serviceDefinition, $serviceReference)
-            ->before(function ($type) {
+            ->before(function ($type): mixed {
                 if (is_string($type) && ! Strings::startsWith($type, '@')) {
                     return ['class' => $type];
                 }
@@ -135,7 +135,7 @@ class MessageBusExtension extends CompilerExtension
      * @param string|array{class: string, arguments: array<mixed>|null} $definition
      * @return string
      */
-    protected function resolveLoggerService($definition): string
+    protected function resolveLoggerService(string|array $definition): string
     {
         if (is_string($definition)) {
             return $definition;

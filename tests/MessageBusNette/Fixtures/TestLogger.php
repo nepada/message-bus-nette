@@ -19,11 +19,12 @@ final class TestLogger extends AbstractLogger
     public array $recordsByLevel = [];
 
     /**
+     * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
      * @param mixed $level
      * @param string|\Stringable $message
      * @param array<mixed> $context
      */
-    public function log($level, $message, array $context = []): void
+    public function log(mixed $level, $message, array $context = []): void
     {
         $record = [
             'level' => $level,
