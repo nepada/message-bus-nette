@@ -10,13 +10,13 @@ use Nette\Utils\Random;
 final class ConfiguratorFactory
 {
 
-    public function create(): Configurator
+    public function create(string $configFile = 'config.neon'): Configurator
     {
         $configurator = new Configurator();
         $configurator->setTempDirectory(Environment::getTempDir());
         $configurator->setDebugMode(true);
         $configurator->addParameters(['appDir' => __DIR__ . '/../Fixtures', 'databaseFile' => Environment::getTempDir() . '/' . Random::generate() . '.sqlite']);
-        $configurator->addConfig(__DIR__ . '/../Fixtures/config.neon');
+        $configurator->addConfig(__DIR__ . "/../Fixtures/{$configFile}");
         return $configurator;
     }
 

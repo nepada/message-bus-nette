@@ -73,6 +73,7 @@ class MessageBusExtension extends CompilerExtension
                 'onSuccess' => Expect::bool(true),
                 'onError' => Expect::bool(true),
             ]),
+            'bleedingEdge' => Expect::bool(false),
         ]);
     }
 
@@ -227,7 +228,7 @@ class MessageBusExtension extends CompilerExtension
      */
     protected function findAndValidateCommandHandlers(): array
     {
-        $handlerValidator = new ConfigurableHandlerValidator(MessageHandlerValidationConfiguration::command());
+        $handlerValidator = new ConfigurableHandlerValidator(MessageHandlerValidationConfiguration::command($this->config->bleedingEdge));
 
         $serviceNameByMessageType = [];
         foreach ($this->findAndValidateMessageHandlers($handlerValidator, CommandHandler::class) as $messageType => $serviceNames) {
@@ -246,7 +247,7 @@ class MessageBusExtension extends CompilerExtension
      */
     protected function findAndValidateEventSubscribers(): array
     {
-        $subscriberValidator = new ConfigurableHandlerValidator(MessageHandlerValidationConfiguration::event());
+        $subscriberValidator = new ConfigurableHandlerValidator(MessageHandlerValidationConfiguration::event($this->config->bleedingEdge));
         return $this->findAndValidateMessageHandlers($subscriberValidator, EventSubscriber::class);
     }
 

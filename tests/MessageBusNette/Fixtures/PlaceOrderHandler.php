@@ -23,7 +23,7 @@ final class PlaceOrderHandler implements CommandHandler
     {
         $this->eventDispatcher->dispatch(new OrderPlacedEvent());
 
-        if ($command->shouldFail()) {
+        if ($command->shouldFail) {
             throw new FailedToPlaceOrderException('Failed to place order');
         }
     }

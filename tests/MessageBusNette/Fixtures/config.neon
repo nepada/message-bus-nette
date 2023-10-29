@@ -1,8 +1,8 @@
+includes:
+    - base.neon
+
 parameters:
     allowNestedCommandHandling: false
-
-extensions:
-    messageBus: Nepada\MessageBusNette\DI\MessageBusExtension
 
 messageBus:
     allowNestedCommandHandling: %allowNestedCommandHandling%
@@ -12,22 +12,3 @@ search:
     implements:
         - Nepada\MessageBus\Commands\CommandHandler
         - Nepada\MessageBus\Events\EventSubscriber
-
-services:
-    -
-        type: Doctrine\ORM\Configuration
-        factory: Doctrine\ORM\Tools\Setup::createAnnotationMetadataConfiguration
-        arguments:
-            paths: [%appDir%]
-            useSimpleAnnotationReader: false
-    -
-        type: Doctrine\Common\EventManager
-        setup:
-            - addEventSubscriber(@Nepada\MessageBusDoctrine\Events\DispatchRecordedEventsFromEntities)
-    -
-        type: Doctrine\ORM\EntityManagerInterface
-        factory: Doctrine\ORM\EntityManager::create
-        arguments:
-            connection: [driver: pdo_sqlite, path: %databaseFile%]
-
-    - NepadaTests\MessageBusNette\Fixtures\TestLogger

@@ -8,16 +8,10 @@ use Nepada\MessageBus\Commands\Command;
 final class PlaceOrderCommand implements Command
 {
 
-    private bool $shouldFail;
-
-    public function __construct(bool $shouldFail = false)
+    public function __construct(
+        public readonly bool $shouldFail = false,
+    )
     {
-        $this->shouldFail = $shouldFail;
-    }
-
-    public function shouldFail(): bool
-    {
-        return $this->shouldFail;
     }
 
 }

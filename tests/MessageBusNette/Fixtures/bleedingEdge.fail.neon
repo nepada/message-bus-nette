@@ -1,0 +1,8 @@
+includes:
+    - base.neon
+
+messageBus:
+    bleedingEdge: true
+
+services:
+    - NepadaTests\MessageBusNette\Fixtures\CreateInvoiceHandler

@@ -9,6 +9,7 @@ use Nepada\MessageBus\Commands\MessengerCommandBus;
 use Nepada\MessageBus\Events\EventDispatcher;
 use Nepada\MessageBus\Events\EventSubscribersLocator;
 use Nepada\MessageBus\Events\MessengerEventDispatcher;
+use Nepada\MessageBus\StaticAnalysis\StaticAnalysisFailedException;
 use NepadaTests\MessageBusNette\Fixtures\CreateInvoiceOnOrderPlaced;
 use NepadaTests\MessageBusNette\Fixtures\NotifyCustomerOnOrderPlaced;
 use NepadaTests\MessageBusNette\Fixtures\OrderPlacedEvent;
@@ -60,6 +61,23 @@ class MessageBusExtensionTest extends TestCase
         Assert::same($expectedHandlerTypes, $handlerTypes);
     }
 
+    public function testBleedingEdge(): void
+    {
+        Assert::noError(
+            function (): void {
+                @$this->createContainer('bleedingEdge.success.neon');
+            },
+        );
+
+        Assert::error(
+            function (): void {
+                $this->createContainer('bleedingEdge.fail.neon');
+            },
+            StaticAnalysisFailedException::class,
+            'Static analysis failed for class "NepadaTests\MessageBusNette\Fixtures\CreateInvoiceCommand": Property shouldFail must be readonly',
+        );
+    }
+
     /**
      * @param iterable<HandlerDescriptor> $handlerDescriptors
      * @return string[]
@@ -78,9 +96,9 @@ class MessageBusExtensionTest extends TestCase
         return $handlerTypes;
     }
 
-    private function createContainer(): Nette\DI\Container
+    private function createContainer(string $configFile = 'config.neon'): Nette\DI\Container
     {
-        return (new ConfiguratorFactory())->create()->createContainer();
+        return (new ConfiguratorFactory())->create($configFile)->createContainer();
     }
 
 }
