@@ -19,6 +19,7 @@ updates:
       - dependency-name: "doctrine/cache"
       - dependency-name: "doctrine/dbal"
       - dependency-name: "doctrine/annotations"
+      - dependency-name: "composer-runtime-api"
     groups:
         phpstan:
             patterns: ["*phpstan*"]
