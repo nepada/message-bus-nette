@@ -4,7 +4,7 @@ declare(strict_types = 1);
 namespace NepadaTests\MessageBusNette\DI;
 
 use NepadaTests\Environment;
-use Nette\Configurator;
+use Nette\Bootstrap\Configurator;
 use Nette\Utils\Random;
 
 final class ConfiguratorFactory
@@ -15,7 +15,7 @@ final class ConfiguratorFactory
         $configurator = new Configurator();
         $configurator->setTempDirectory(Environment::getTempDir());
         $configurator->setDebugMode(true);
-        $configurator->addParameters(['appDir' => __DIR__ . '/../Fixtures', 'databaseFile' => Environment::getTempDir() . '/' . Random::generate() . '.sqlite']);
+        $configurator->addStaticParameters(['appDir' => __DIR__ . '/../Fixtures', 'databaseFile' => Environment::getTempDir() . '/' . Random::generate() . '.sqlite']);
         $configurator->addConfig(__DIR__ . "/../Fixtures/{$configFile}");
         return $configurator;
     }

@@ -369,7 +369,7 @@ class IntegrationTest extends TestCase
     private function createContainer(array $parameters = []): Nette\DI\Container
     {
         $configurator = (new ConfiguratorFactory())->create();
-        $configurator->addParameters($parameters);
+        $configurator->addStaticParameters($parameters);
         return $configurator->createContainer();
     }
 

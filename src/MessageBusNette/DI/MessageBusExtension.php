@@ -30,13 +30,13 @@ use Nette;
 use Nette\DI\CompilerExtension;
 use Nette\DI\Definitions\ServiceDefinition;
 use Nette\Schema\Expect;
-use Nette\Utils\Strings;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 use Symfony\Component\Messenger\MessageBus;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Messenger\Middleware\DispatchAfterCurrentBusMiddleware;
 use Symfony\Component\Messenger\Middleware\HandleMessageMiddleware;
+use function str_starts_with;
 
 /**
  * @property \stdClass $config
@@ -57,10 +57,10 @@ class MessageBusExtension extends CompilerExtension
             ->castTo('array')
             ->assert(fn (array $definition): bool => class_exists($definition['class']), 'Class must exist');
         $serviceReference = Expect::string()
-            ->assert(fn (string $service): bool => Strings::startsWith($service, '@'));
+            ->assert(fn (string $service): bool => str_starts_with($service, '@'));
         $service = Expect::anyOf($serviceDefinition, $serviceReference)
             ->before(function ($type): mixed {
-                if (is_string($type) && ! Strings::startsWith($type, '@')) {
+                if (is_string($type) && ! str_starts_with($type, '@')) {
                     return ['class' => $type];
                 }
                 return $type;
