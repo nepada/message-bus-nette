@@ -1,11 +1,11 @@
 <?php
 declare(strict_types = 1);
 
-namespace NepadaTests\MessageBusNette\Fixtures\Base;
+namespace NepadaTests\MessageBusNette\Fixtures\Extra;
 
 use Nepada\MessageBus\Commands\Command;
 
-final readonly class PlaceOrderCommand implements Command
+final class MutableCommand implements Command
 {
 
     public function __construct(

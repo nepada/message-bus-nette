@@ -8,7 +8,7 @@ use Nepada\MessageBus\Events\Event;
 /**
  * Event with no subscribers.
  */
-final class InvoiceCreatedEvent implements Event
+final readonly class InvoiceCreatedEvent implements Event
 {
 
 }

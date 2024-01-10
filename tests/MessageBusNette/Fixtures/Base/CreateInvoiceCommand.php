@@ -5,7 +5,7 @@ namespace NepadaTests\MessageBusNette\Fixtures\Base;
 
 use Nepada\MessageBus\Commands\Command;
 
-final class CreateInvoiceCommand implements Command
+final readonly class CreateInvoiceCommand implements Command
 {
 
     private bool $shouldFail;

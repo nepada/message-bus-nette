@@ -8,7 +8,7 @@ use Nepada\MessageBus\Events\Event;
 /**
  * Event with 2 subscribers.
  */
-final class OrderPlacedEvent implements Event
+final readonly class OrderPlacedEvent implements Event
 {
 
 }

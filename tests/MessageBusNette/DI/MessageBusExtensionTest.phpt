@@ -9,7 +9,6 @@ use Nepada\MessageBus\Commands\MessengerCommandBus;
 use Nepada\MessageBus\Events\EventDispatcher;
 use Nepada\MessageBus\Events\EventSubscribersLocator;
 use Nepada\MessageBus\Events\MessengerEventDispatcher;
-use Nepada\MessageBus\StaticAnalysis\StaticAnalysisFailedException;
 use NepadaTests\MessageBusNette\Fixtures\Base\CreateInvoiceOnOrderPlaced;
 use NepadaTests\MessageBusNette\Fixtures\Base\NotifyCustomerOnOrderPlaced;
 use NepadaTests\MessageBusNette\Fixtures\Base\OrderPlacedEvent;
@@ -30,16 +29,22 @@ require_once __DIR__ . '/../../bootstrap.php';
 class MessageBusExtensionTest extends TestCase
 {
 
-    public function testBusses(): void
+    /**
+     * @dataProvider bleedingEdgeProvider
+     */
+    public function testBusses(bool $bleedingEdge): void
     {
-        $container = $this->createContainer();
+        $container = $this->createContainer($bleedingEdge);
         Assert::type(MessengerCommandBus::class, $container->getByType(CommandBus::class));
         Assert::type(MessengerEventDispatcher::class, $container->getByType(EventDispatcher::class));
     }
 
-    public function testCommandHandlerLocator(): void
+    /**
+     * @dataProvider bleedingEdgeProvider
+     */
+    public function testCommandHandlerLocator(bool $bleedingEdge): void
     {
-        $container = $this->createContainer();
+        $container = $this->createContainer($bleedingEdge);
         /** @var CommandHandlerLocator $locator */
         $locator = $container->getService('messageBus.commands.handlerLocator');
         Assert::type(CommandHandlerLocator::class, $locator);
@@ -49,9 +54,12 @@ class MessageBusExtensionTest extends TestCase
         Assert::same($expectedHandlerTypes, $handlerTypes);
     }
 
-    public function testEventSubscribersLocator(): void
+    /**
+     * @dataProvider bleedingEdgeProvider
+     */
+    public function testEventSubscribersLocator(bool $bleedingEdge): void
     {
-        $container = $this->createContainer();
+        $container = $this->createContainer($bleedingEdge);
         /** @var EventSubscribersLocator $locator */
         $locator = $container->getService('messageBus.events.handlerLocator');
         Assert::type(EventSubscribersLocator::class, $locator);
@@ -59,23 +67,6 @@ class MessageBusExtensionTest extends TestCase
         $expectedHandlerTypes = [CreateInvoiceOnOrderPlaced::class, NotifyCustomerOnOrderPlaced::class];
         $handlerTypes = $this->extractNormalizedHandlerTypes($locator->getHandlers(new Envelope(new OrderPlacedEvent())));
         Assert::same($expectedHandlerTypes, $handlerTypes);
-    }
-
-    public function testBleedingEdge(): void
-    {
-        Assert::noError(
-            function (): void {
-                @$this->createContainer('bleedingEdge.success.neon');
-            },
-        );
-
-        Assert::error(
-            function (): void {
-                $this->createContainer('bleedingEdge.fail.neon');
-            },
-            StaticAnalysisFailedException::class,
-            'Static analysis failed for class "NepadaTests\MessageBusNette\Fixtures\Base\CreateInvoiceCommand": Property shouldFail must be readonly',
-        );
     }
 
     /**
@@ -96,9 +87,20 @@ class MessageBusExtensionTest extends TestCase
         return $handlerTypes;
     }
 
-    private function createContainer(string $configFile = 'config.neon'): Nette\DI\Container
+    /**
+     * @return mixed[]
+     */
+    protected function bleedingEdgeProvider(): array
     {
-        return (new ConfiguratorFactory())->create($configFile)->createContainer();
+        return [
+            [true],
+            [false],
+        ];
+    }
+
+    private function createContainer(bool $bleedingEdge): Nette\DI\Container
+    {
+        return (new ConfiguratorFactory())->create('config.neon', $bleedingEdge)->createContainer();
     }
 
 }
