@@ -5,4 +5,4 @@ messageBus:
     bleedingEdge: true
 
 services:
-    - NepadaTests\MessageBusNette\Fixtures\CreateInvoiceHandler
+    - NepadaTests\MessageBusNette\Fixtures\Base\CreateInvoiceHandler

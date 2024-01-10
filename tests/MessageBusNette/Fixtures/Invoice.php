@@ -6,6 +6,7 @@ namespace NepadaTests\MessageBusNette\Fixtures;
 use Doctrine\ORM\Mapping as ORM;
 use Nepada\MessageBusDoctrine\Events\ContainsRecordedEvents;
 use Nepada\MessageBusDoctrine\Events\PrivateEventRecorder;
+use NepadaTests\MessageBusNette\Fixtures\Base\InvoiceCreatedEvent;
 
 /**
  * @ORM\Entity()

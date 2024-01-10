@@ -16,7 +16,7 @@ final class ConfiguratorFactory
         $configurator->setTempDirectory(Environment::getTempDir());
         $configurator->setDebugMode(true);
         $configurator->addStaticParameters(['appDir' => __DIR__ . '/../Fixtures', 'databaseFile' => Environment::getTempDir() . '/' . Random::generate() . '.sqlite']);
-        $configurator->addConfig(__DIR__ . "/../Fixtures/{$configFile}");
+        $configurator->addConfig(__DIR__ . "/../Fixtures/config/{$configFile}");
         return $configurator;
     }
 

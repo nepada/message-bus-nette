@@ -1,10 +1,12 @@
 <?php
 declare(strict_types = 1);
 
-namespace NepadaTests\MessageBusNette\Fixtures;
+namespace NepadaTests\MessageBusNette\Fixtures\Base;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Nepada\MessageBus\Commands\CommandHandler;
+use NepadaTests\MessageBusNette\Fixtures\FailedToCreateInvoiceException;
+use NepadaTests\MessageBusNette\Fixtures\Invoice;
 
 final class CreateInvoiceHandler implements CommandHandler
 {
