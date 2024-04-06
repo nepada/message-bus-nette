@@ -3,24 +3,23 @@ declare(strict_types = 1);
 
 namespace NepadaTests\MessageBusNette\Fixtures;
 
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Column;
+use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\Mapping\GeneratedValue;
+use Doctrine\ORM\Mapping\Id;
 use Nepada\MessageBusDoctrine\Events\ContainsRecordedEvents;
 use Nepada\MessageBusDoctrine\Events\PrivateEventRecorder;
 use NepadaTests\MessageBusNette\Fixtures\Base\InvoiceCreatedEvent;
 
-/**
- * @ORM\Entity()
- */
+#[Entity]
 class Invoice implements ContainsRecordedEvents
 {
 
     use PrivateEventRecorder;
 
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
+    #[Id]
+    #[Column(type: 'integer')]
+    #[GeneratedValue(strategy: 'IDENTITY')]
     private ?int $id = null;
 
     public static function create(): self

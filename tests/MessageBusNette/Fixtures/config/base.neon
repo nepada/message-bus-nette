@@ -4,18 +4,20 @@ extensions:
 services:
     -
         type: Doctrine\ORM\Configuration
-        factory: Doctrine\ORM\Tools\Setup::createAnnotationMetadataConfiguration
+        factory: Doctrine\ORM\ORMSetup::createAttributeMetadataConfiguration
         arguments:
             paths: [%appDir%]
-            useSimpleAnnotationReader: false
     -
         type: Doctrine\Common\EventManager
         setup:
             - addEventSubscriber(@Nepada\MessageBusDoctrine\Events\DispatchRecordedEventsFromEntities)
     -
-        type: Doctrine\ORM\EntityManagerInterface
-        factory: Doctrine\ORM\EntityManager::create
+        type: Doctrine\DBAL\Connection
+        factory: Doctrine\DBAL\DriverManager::getConnection
         arguments:
-            connection: [driver: pdo_sqlite, path: %databaseFile%]
+            params: [driver: pdo_sqlite, path: %databaseFile%]
+    -
+        type: Doctrine\ORM\EntityManagerInterface
+        factory: Doctrine\ORM\EntityManager
 
     - NepadaTests\MessageBusNette\Fixtures\TestLogger
