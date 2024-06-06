@@ -262,7 +262,7 @@ class MessageBusExtension extends CompilerExtension
 
         $serviceNamesByMessageType = [];
         foreach ($containerBuilder->findByType($handlerType) as $serviceName => $serviceDefinition) {
-            /** @var class-string<EventSubscriber|CommandHandler>|null $handlerTypeString allow-narrowing */
+            /** @var class-string<EventSubscriber|CommandHandler>|null $handlerTypeString */
             $handlerTypeString = $serviceDefinition->getType();
             if ($handlerTypeString === null) {
                 throw new \LogicException('Type of handler service type must be defined in this context.');
