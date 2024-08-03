@@ -27,6 +27,7 @@ final class TestLogger extends AbstractLogger
      */
     public function log(mixed $level, $message, array $context = []): void
     {
+        assert(is_string($level) || is_int($level));
         $record = [
             'level' => $level,
             'message' => $message,
