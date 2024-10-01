@@ -40,7 +40,7 @@
         "doctrine/dbal": ">=2.13.3",
         "symfony/cache": ">=6.0",
         "composer-runtime-api": "^2.0",
-        "composer/semver": "3.4.2"
+        "composer/semver": "3.4.3"
     },
     "autoload": {
         "psr-4": {
