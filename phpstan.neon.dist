@@ -24,3 +24,45 @@ parameters:
         uncheckedExceptionClasses:
             - LogicException
             - Nette\InvalidStateException
+
+    ignoreErrors:
+        - # pre-validated config
+            message: '#^Cannot access property \$onError on mixed\.$#'
+            identifier: property.nonObject
+            count: 1
+            path: src/MessageBusNette/DI/MessageBusExtension.php
+        - # pre-validated config
+            message: '#^Cannot access property \$onStart on mixed\.$#'
+            identifier: property.nonObject
+            count: 1
+            path: src/MessageBusNette/DI/MessageBusExtension.php
+        - # pre-validated config
+            message: '#^Cannot access property \$onSuccess on mixed\.$#'
+            identifier: property.nonObject
+            count: 1
+            path: src/MessageBusNette/DI/MessageBusExtension.php
+        - # pre-validated config
+            message: '#^Parameter \#1 \$bleedingEdge of static method Nepada\\MessageBus\\StaticAnalysis\\MessageHandlerValidationConfiguration\:\:command\(\) expects bool, mixed given\.$#'
+            identifier: argument.type
+            count: 1
+            path: src/MessageBusNette/DI/MessageBusExtension.php
+        - # pre-validated config
+            message: '#^Parameter \#1 \$bleedingEdge of static method Nepada\\MessageBus\\StaticAnalysis\\MessageHandlerValidationConfiguration\:\:event\(\) expects bool, mixed given\.$#'
+            identifier: argument.type
+            count: 1
+            path: src/MessageBusNette/DI/MessageBusExtension.php
+        - # pre-validated config
+            message: '#^Parameter \#1 \$class of function class_exists expects string, mixed given\.$#'
+            identifier: argument.type
+            count: 1
+            path: src/MessageBusNette/DI/MessageBusExtension.php
+        - # pre-validated config
+            message: '#^Parameter \#1 \$definition of method Nepada\\MessageBusNette\\DI\\MessageBusExtension\:\:resolveLoggerService\(\) expects array\{class\: string, arguments\: array\<mixed\>\|null\}\|string, mixed given\.$#'
+            identifier: argument.type
+            count: 1
+            path: src/MessageBusNette/DI/MessageBusExtension.php
+        -
+            message: '#^Method Nepada\\MessageBusNette\\DI\\PsrContainerAdapter\:\:get\(\) should return object but returns mixed\.$#'
+            identifier: return.type
+            count: 1
+            path: src/MessageBusNette/DI/PsrContainerAdapter.php

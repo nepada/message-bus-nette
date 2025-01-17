@@ -26,3 +26,8 @@ parameters:
 
     ignoreErrors:
         - '~Call to static method Tester\\Assert::(type|count|same|notSame)\(\) with .* and .* will always evaluate to true\.~'
+        -
+            message: '#^Property NepadaTests\\MessageBusNette\\Fixtures\\Invoice\:\:\$id \(int\|null\) is never assigned int so it can be removed from the property type\.$#'
+            identifier: property.unusedType
+            count: 1
+            path: tests/MessageBusNette/Fixtures/Invoice.php

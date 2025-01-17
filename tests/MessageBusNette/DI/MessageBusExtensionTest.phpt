@@ -71,7 +71,7 @@ class MessageBusExtensionTest extends TestCase
 
     /**
      * @param iterable<HandlerDescriptor> $handlerDescriptors
-     * @return string[]
+     * @return list<string>
      */
     private function extractNormalizedHandlerTypes(iterable $handlerDescriptors): array
     {
@@ -88,7 +88,7 @@ class MessageBusExtensionTest extends TestCase
     }
 
     /**
-     * @return mixed[]
+     * @return list<mixed[]>
      */
     protected function bleedingEdgeProvider(): array
     {

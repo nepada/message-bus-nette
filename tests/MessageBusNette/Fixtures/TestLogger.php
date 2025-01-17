@@ -9,12 +9,12 @@ final class TestLogger extends AbstractLogger
 {
 
     /**
-     * @var array<int, array{level: mixed, message: string|\Stringable, context: array<mixed>}>
+     * @var list<array{level: mixed, message: string|\Stringable, context: array<string, mixed>}>
      */
     public array $records = [];
 
     /**
-     * @var array<string|int, array<int, array{level: mixed, message: string|\Stringable, context: array<mixed>}>>
+     * @var array<string|int, array<int, array{level: mixed, message: string|\Stringable, context: array<string, mixed>}>>
      */
     public array $recordsByLevel = [];
 
@@ -23,7 +23,7 @@ final class TestLogger extends AbstractLogger
      * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.UselessAnnotation
      * @param mixed $level
      * @param string|\Stringable $message
-     * @param array<mixed> $context
+     * @param array<string, mixed> $context
      */
     public function log(mixed $level, $message, array $context = []): void
     {
