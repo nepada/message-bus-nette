@@ -25,7 +25,7 @@ if ($isInstalled('psr/log', '<2.0')) {
     ];
 } else {
     $config['parameters']['ignoreErrors'][] = [
-        'message' => '#^Parameter \\#3 \\$context \\(array\\<string, mixed\\>\\) of method NepadaTests\\\\MessageBusNette\\\\Fixtures\\\\TestLogger\\:\\:log\\(\\) should be contravariant with parameter \\$context \\(array\\) of method Psr\\\\Log\\\\LoggerTrait\\:\\:log\\(\\)$#',
+        'message' => '#^Parameter \\#3 \\$context \\(array\\<string, mixed\\>\\) of method NepadaTests\\\\MessageBusNette\\\\Fixtures\\\\TestLogger\\:\\:log\\(\\) should be contravariant with parameter \\$context \\(array<mixed>\\) of method Psr\\\\Log\\\\LoggerTrait\\:\\:log\\(\\)$#',
         'identifier' => 'method.childParameterType',
         'count' => 1,
         'path' => __DIR__ . '/../../tests/MessageBusNette/Fixtures/TestLogger.php',
