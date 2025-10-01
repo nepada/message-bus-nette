@@ -42,7 +42,7 @@
         "symfony/cache": "^6.3.12 || ^6.4.3 || ^7.0.3 || >=7.1",
         "symfony/cache-contracts": ">=3.4.2",
         "composer-runtime-api": "^2.0",
-        "composer/semver": "3.4.3"
+        "composer/semver": "3.4.4"
     },
     "autoload": {
         "psr-4": {
