@@ -116,6 +116,7 @@ class IntegrationTest extends TestCase
     public function testFailedCommandDoesNotDispatchEvents(): void
     {
         $container = $this->createContainer();
+        $this->setupDatabase($container);
         $commandBus = $container->getByType(CommandBus::class);
 
         Assert::exception(
@@ -356,7 +357,8 @@ class IntegrationTest extends TestCase
         /** @var EntityManagerInterface $entityManager */
         $entityManager = $container->getByType(EntityManagerInterface::class);
         $connection = $entityManager->getConnection();
-        $metadata = $entityManager->getMetadataFactory()->getAllMetadata();
+        @$connection->executeQuery('SELECT 1'); // force connection creation and suppress deprecation error of DBAL 2.x on PHP 8.5
+        $metadata = @$entityManager->getMetadataFactory()->getAllMetadata(); // suppress deprecation error on PHP 8.5
         $schemaTool = new SchemaTool($entityManager);
         foreach ($schemaTool->getCreateSchemaSql($metadata) as $query) {
             $connection->executeQuery($query);
