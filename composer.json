@@ -35,11 +35,11 @@
         "nepada/coding-standard": "8.0.1",
         "nepada/message-bus-doctrine": "^2.1@dev",
         "nette/bootstrap": ">=3.1@dev",
-        "nette/robot-loader": ">=3.3.1@dev",
+        "nette/robot-loader": ">=3.3.1",
         "nette/neon": ">=3.3.4@dev",
         "doctrine/orm": ">=2.13",
         "doctrine/dbal": ">=2.13.3",
-        "symfony/cache": "^6.3.12 || ^6.4.3 || ^7.0.3 || >=7.1",
+        "symfony/cache": "^6.3.12 || ^6.4.3 || ^7.0.3",
         "symfony/cache-contracts": ">=3.4.2",
         "composer-runtime-api": "^2.0",
         "composer/semver": "3.4.4"
