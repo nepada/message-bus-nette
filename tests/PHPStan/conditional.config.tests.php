@@ -53,4 +53,12 @@ if ($isInstalled('doctrine/persistence', '<3.1')) {
     ];
 }
 
+if (! $isInstalled('doctrine/orm', '<3.4')) {
+    $config['parameters']['ignoreErrors'][] = [
+        'message' => '#^Call to function method_exists\\(\\) with Doctrine\\\\ORM\\\\Configuration and \'enableNativeLazy.*\' will always evaluate to true\\.$#',
+        'path' => __DIR__ . '/../../tests/MessageBusNette/DI/ConfiguratorFactory.php',
+        'count' => 1,
+    ];
+}
+
 return $config;

@@ -3,12 +3,21 @@ declare(strict_types = 1);
 
 namespace NepadaTests\MessageBusNette\DI;
 
+use Doctrine\ORM\Configuration;
 use NepadaTests\Environment;
 use Nette\Bootstrap\Configurator;
 use Nette\Utils\Random;
+use function method_exists;
 
 final class ConfiguratorFactory
 {
+
+    public static function configureDoctrineOrmProxies(Configuration $configuration): void
+    {
+        if (PHP_VERSION_ID >= 8_04_00 && method_exists($configuration, 'enableNativeLazyObjects')) {
+            $configuration->enableNativeLazyObjects(true);
+        }
+    }
 
     public function create(string $configFile = 'config.neon', ?bool $bleedingEdge = null): Configurator
     {
