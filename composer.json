@@ -16,7 +16,7 @@
     ],
     "require": {
         "php": ">=8.2.0 <8.6",
-        "symfony/messenger": "^5.0@dev || ^6.0@dev || ^7.0@dev",
+        "symfony/messenger": "^5.0@dev || ^6.0@dev || ^7.0@dev || ^8.0@dev",
         "nepada/message-bus": "^2.2@dev || ^3.0@dev",
         "nette/di": "^3.0.9@dev",
         "nette/utils": "^3.2.5@dev || ^4.0@dev",
@@ -39,7 +39,7 @@
         "nette/neon": ">=3.3.4@dev",
         "doctrine/orm": ">=2.13",
         "doctrine/dbal": ">=2.13.3",
-        "symfony/cache": "^6.3.12 || ^6.4.3 || ^7.0.3",
+        "symfony/cache": "^6.3.12 || ^6.4.3 || ^7.0.3 || >=7.1",
         "symfony/cache-contracts": ">=3.4.2",
         "composer-runtime-api": "^2.0",
         "composer/semver": "3.4.4"
