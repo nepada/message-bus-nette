@@ -32,4 +32,13 @@ if ($isInstalled('nette/schema', '>=1.3.4')) {
     ];
 }
 
+if ($isInstalled('nette/di', '>=3.2.6')) {
+    // Type pre-validated
+    $config['parameters']['ignoreErrors'][] = [
+        'message' => '~^Casting to string something that\'s already string\\.$~',
+        'path' => __DIR__ . '/../../src/MessageBusNette/DI/MessageBusExtension.php',
+        'count' => 1,
+    ];
+}
+
 return $config;

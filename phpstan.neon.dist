@@ -57,7 +57,7 @@ parameters:
             count: 1
             path: src/MessageBusNette/DI/MessageBusExtension.php
         - # pre-validated config
-            message: '#^Parameter \#1 \$definition of method Nepada\\MessageBusNette\\DI\\MessageBusExtension\:\:resolveLoggerService\(\) expects array\{class\: string, arguments\: array\<mixed\>\|null\}\|string, mixed given\.$#'
+            message: '#^Parameter \#1 \$definition of method Nepada\\MessageBusNette\\DI\\MessageBusExtension\:\:resolveLoggerService\(\) expects array\{class\: class-string, arguments\: array\<mixed\>\|null\}\|string, mixed given\.$#'
             identifier: argument.type
             count: 1
             path: src/MessageBusNette/DI/MessageBusExtension.php
