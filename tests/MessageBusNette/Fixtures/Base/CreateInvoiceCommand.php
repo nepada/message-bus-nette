@@ -8,11 +8,10 @@ use Nepada\MessageBus\Commands\Command;
 final readonly class CreateInvoiceCommand implements Command
 {
 
-    private bool $shouldFail;
-
-    public function __construct(bool $shouldFail = false)
+    public function __construct(
+        private bool $shouldFail = false,
+    )
     {
-        $this->shouldFail = $shouldFail;
     }
 
     public function shouldFail(): bool

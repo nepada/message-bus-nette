@@ -59,7 +59,10 @@ class BleedingEdgeTest extends TestCase
         );
     }
 
-    private function createContainer(string $configFile, ?bool $bleedingEdge = null): Nette\DI\Container
+    private function createContainer(
+        string $configFile,
+        ?bool $bleedingEdge = null,
+    ): Nette\DI\Container
     {
         return (new ConfiguratorFactory())->create($configFile, $bleedingEdge)->createContainer();
     }

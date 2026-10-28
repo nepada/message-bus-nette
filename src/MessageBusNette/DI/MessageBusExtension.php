@@ -255,7 +255,10 @@ class MessageBusExtension extends CompilerExtension
      * @return string[][]
      * @throws StaticAnalysisFailedException
      */
-    protected function findAndValidateMessageHandlers(MessageHandlerValidator $messageHandlerValidator, string $handlerType): array
+    protected function findAndValidateMessageHandlers(
+        MessageHandlerValidator $messageHandlerValidator,
+        string $handlerType,
+    ): array
     {
         $containerBuilder = $this->getContainerBuilder();
         $messageTypeExtractor = new MessageTypeExtractor();

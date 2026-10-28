@@ -8,11 +8,10 @@ use Nepada\MessageBus\Commands\Command;
 final readonly class CreateTwoInvoicesCommand implements Command
 {
 
-    private bool $shouldSecondFail;
-
-    public function __construct(bool $shouldSecondFail = false)
+    public function __construct(
+        private bool $shouldSecondFail = false,
+    )
     {
-        $this->shouldSecondFail = $shouldSecondFail;
     }
 
     public function shouldSecondFail(): bool

@@ -12,11 +12,10 @@ use Nepada\MessageBus\Events\EventSubscriber;
 final class CreateInvoiceOnOrderPlaced implements EventSubscriber
 {
 
-    private CommandBus $commandBus;
-
-    public function __construct(CommandBus $commandBus)
+    public function __construct(
+        private CommandBus $commandBus,
+    )
     {
-        $this->commandBus = $commandBus;
     }
 
     public function __invoke(OrderPlacedEvent $event): void

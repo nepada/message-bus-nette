@@ -13,11 +13,10 @@ use NepadaTests\MessageBusNette\Fixtures\FailedToPlaceOrderException;
 final class PlaceOrderHandler implements CommandHandler
 {
 
-    private EventDispatcher $eventDispatcher;
-
-    public function __construct(EventDispatcher $eventDispatcher)
+    public function __construct(
+        private EventDispatcher $eventDispatcher,
+    )
     {
-        $this->eventDispatcher = $eventDispatcher;
     }
 
     public function __invoke(PlaceOrderCommand $command): void

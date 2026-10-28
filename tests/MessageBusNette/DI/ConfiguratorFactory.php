@@ -19,7 +19,10 @@ final class ConfiguratorFactory
         }
     }
 
-    public function create(string $configFile = 'config.neon', ?bool $bleedingEdge = null): Configurator
+    public function create(
+        string $configFile = 'config.neon',
+        ?bool $bleedingEdge = null,
+    ): Configurator
     {
         $configurator = new Configurator();
         $configurator->setTempDirectory(Environment::getTempDir());

@@ -9,11 +9,10 @@ use Psr\Container\ContainerInterface;
 final class PsrContainerAdapter implements ContainerInterface
 {
 
-    private Container $container;
-
-    public function __construct(Container $container)
+    public function __construct(
+        private Container $container,
+    )
     {
-        $this->container = $container;
     }
 
     public function get(string $id): object

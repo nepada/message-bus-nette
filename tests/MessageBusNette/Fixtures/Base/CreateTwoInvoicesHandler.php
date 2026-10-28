@@ -9,11 +9,10 @@ use Nepada\MessageBus\Commands\CommandHandler;
 final class CreateTwoInvoicesHandler implements CommandHandler
 {
 
-    private CommandBus $commandBus;
-
-    public function __construct(CommandBus $commandBus)
+    public function __construct(
+        private CommandBus $commandBus,
+    )
     {
-        $this->commandBus = $commandBus;
     }
 
     public function __invoke(CreateTwoInvoicesCommand $command): void
