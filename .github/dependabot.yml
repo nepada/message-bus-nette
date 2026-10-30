@@ -21,6 +21,7 @@ updates:
       - dependency-name: "symfony/cache-contracts"
       - dependency-name: "doctrine/dbal"
       - dependency-name: "doctrine/orm"
+      - dependency-name: "doctrine/event-manager"
       - dependency-name: "composer-runtime-api"
     groups:
         phpstan:
