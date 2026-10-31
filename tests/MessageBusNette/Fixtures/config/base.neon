@@ -12,7 +12,7 @@ services:
     -
         type: Doctrine\Common\EventManager
         setup:
-            - addEventSubscriber(@Nepada\MessageBusDoctrine\Events\DispatchRecordedEventsFromEntities)
+            - NepadaTests\MessageBusNette\DI\ConfiguratorFactory::addEventSubscriber(@self, @Nepada\MessageBusDoctrine\Events\DispatchRecordedEventsFromEntities)
     -
         type: Doctrine\DBAL\Connection
         factory: Doctrine\DBAL\DriverManager::getConnection
